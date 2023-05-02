@@ -1,0 +1,35 @@
+.card {
+  width: 384px;
+  height: 50vh;
+  border: 2px solid black;
+  cursor: pointer;
+  transition: 200ms;
+  border-radius: 0.5rem;
+  position: relative;
+  margin: 2rem;
+}
+
+.card:hover {
+  transform: scale(1.05);
+  box-shadow: 5px 10px 1rem #888888;
+}
+
+.card-info {
+  padding: 0.5rem;
+}
+
+.card-title {
+  font-size: 2rem;
+}
+
+.card-date {
+  color: red;
+  font-size: 1.2rem;
+  font-weight: 700;
+}
+
+.like-btn {
+  position: absolute;
+  top: 220px;
+  right: 1rem;
+}
