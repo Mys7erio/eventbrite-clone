@@ -40,3 +40,8 @@ input {
     margin-top: 4rem;
     background-color: skyblue;
 }
+
+.message {
+    text-align: center;
+    color: red;
+}

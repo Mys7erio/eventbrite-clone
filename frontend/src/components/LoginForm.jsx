@@ -6,6 +6,7 @@ function LoginForm() {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
   const [loggedIn, setLoggedIn] = useState(false);
+  const [message, setMessage] = useState("");
 
   const handleUsernameChange = (event) => {
     setUsername(event.target.value);
@@ -18,7 +19,7 @@ function LoginForm() {
   const handleSubmit = async (event) => {
     event.preventDefault();
     console.log(`Submitting username: ${username} and password: ${password}`);
-    const response = await fetch("http://localhost:8000/login/", {
+    const response = await fetch("http://localhost:8000/api-token-auth/", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
@@ -30,12 +31,16 @@ function LoginForm() {
     });
 
     const data = await response.json();
-    console.log(response.status);
-    console.log(data);
 
-    console.log(response.status === 302);
-    if (response.status === 302) {
+    // Login failed
+    if (!data.token){
+      setMessage("Login Failed"); 
+    }
+    else {
+      // Login successful
       setLoggedIn(true);
+      localStorage.setItem("Token", data.token)
+      console.log(localStorage.getItem("Token"))
     }
   };
 
@@ -47,6 +52,7 @@ function LoginForm() {
     <div className="container">
       <div className="form-container">
         <form onSubmit={handleSubmit} className="centered-form">
+
           <label>
             <strong>Username</strong>
             <input
@@ -55,6 +61,7 @@ function LoginForm() {
               onChange={handleUsernameChange}
             />
           </label>
+
           <label>
             <strong>Password</strong>
             <input
@@ -63,9 +70,13 @@ function LoginForm() {
               onChange={handlePasswordChange}
             />
           </label>
+
+          <p className="message">{message}</p>
+
           <button type="submit" className="blue-button">
             Login
           </button>
+
         </form>
       </div>
     </div>
