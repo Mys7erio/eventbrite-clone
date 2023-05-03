@@ -32,3 +32,14 @@ This enviroment variable is used to specify the port on which the MySQL instance
 
 
 ### Note: All the above mentioned enviroment variables need to be set for the application to work
+<br>
+
+
+# Screenshots
+
+### Login Page
+![Login Page](images/login.png)
+
+
+### Home Page
+![Home Page](images/home.png)
